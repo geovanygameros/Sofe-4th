@@ -17,12 +17,18 @@ public:
     void initHippoSprite();
     
     void initSpawner();
+
+    void spawnSprite(float dt);
     
     void initClickListener();
-    
+
     JumpingHippo* context = this;
 
     CREATE_FUNC(JumpingHippo);
+
+    int enemyCount = 0; //variable de clase
+    int jumpCounter = 0;
 };
+
 
 #endif // JumpingHippo

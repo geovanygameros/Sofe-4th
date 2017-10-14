@@ -1,4 +1,4 @@
-#include "Board.h"
+#include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 
 USING_NS_CC;
@@ -103,33 +103,73 @@ void Board::stopDiceAndMove()
     auto jumps = JumpTo::create(actualNumber * 0.6, finalPosition, 60, actualNumber);
     
     playerSprite->runAction(jumps);
-    
-    schedule([=](float dt){
-        Director::getInstance()->pushScene(sceneConstructors[actualNumber-1]());
-    }, actualNumber, 1, 0, "changeScene");
+
+    //schestopDiceAnddule([=](float dt){
+    //    Director::getInstance()->pushScene(JumpingHippo::createScene());
+    //}, actualNumber, 1, 0, "chastopDiceAndngeScene");
 }
 
 void Board::startDice()
 {
+    // crear sprites de dados
+
+    auto dice1 = Sprite::create("dice1.png");
+    auto dice2 = Sprite::create("dice2.png");
+    auto dice3 = Sprite::create("dice3.png");
+    auto dice4 = Sprite::create("dice4.png");
+    auto dice5 = Sprite::create("dice5.png");
+    auto dice6 = Sprite::create("dice6.png");
     Size screenSize = Director::getInstance()->getVisibleSize();
-    auto diceLabel = Label::create();
+    //auto diceLabel = Label::create();
     
-    diceLabel->setPosition(Vec2(screenSize/3.f * 2.f));
-    diceLabel->setSystemFontSize(40);
-    
-    addChild(diceLabel);
-    
+    //diceLabel->setPosition(Vec2(screenSize/3.f * 2.f));
+    //diceLabel->setSystemFontSize(40);
+
+    // Fuerza bruta pero jala ;)
+    dice1 -> setPosition(Vec2(screenSize/3.f * 2.f));
+    dice2 -> setPosition(Vec2(screenSize/3.f * 2.f));
+    dice3 -> setPosition(Vec2(screenSize/3.f * 2.f));
+    dice4 -> setPosition(Vec2(screenSize/3.f * 2.f));
+    dice5 -> setPosition(Vec2(screenSize/3.f * 2.f));
+    dice6 -> setPosition(Vec2(screenSize/3.f * 2.f));
+
+    addChild(dice1);
+    addChild(dice2);
+    addChild(dice3);
+    addChild(dice4);
+    addChild(dice5);
+    addChild(dice6);
+
+    //addChild(diceLabel);
+
+
+
     schedule([=](float dt){
+
+
 
         actualNumber %= sceneConstructors.size();
         actualNumber++;
-        
-        string text = "";
-        text.push_back(actualNumber+'0');
-        diceLabel->setString(text);
+        bool diceVisible1 = actualNumber==1 ? true : false;
+        bool diceVisible2 = actualNumber==2 ? true : false;
+        bool diceVisible3 = actualNumber==3 ? true : false;
+        bool diceVisible4 = actualNumber==4 ? true : false;
+        bool diceVisible5 = actualNumber==5 ? true : false;
+        bool diceVisible6 = actualNumber==6 ? true : false;
+
+        dice1 -> setVisible(diceVisible1);
+        dice2 -> setVisible(diceVisible2);
+        dice3 -> setVisible(diceVisible3);
+        dice4 -> setVisible(diceVisible4);
+        dice5 -> setVisible(diceVisible5);
+        dice6 -> setVisible(diceVisible6);
+
+        //string text = "";
+       // text.push_back(actualNumber+'0');
+        //diceLabel->setString(text);
         
     }, 0.1f, -1, 0, "changeDiceNumber");
-    
+
 }
 
 void Board::stopDice()

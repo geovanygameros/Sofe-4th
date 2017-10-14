@@ -28,6 +28,7 @@ public:
     
     void initTiles();
     void initPlayer();
+
     void initClickListener();
     void startDice();
     void stopDice();
@@ -35,16 +36,16 @@ public:
     int actualNumber = 1;
     
     Sprite* playerSprite;
-    
-    vector<SceneConstructors> sceneConstructors =
-    {
-        JumpingHippo::createScene,
-        Chips::createScene,
-        Drow::createScene,
-        Gluttony::createScene,
-        Stacking::createScene,
-        Counting::createScene
-    };
+
+    vector<string> sceneConstructors =
+            {
+                    "Jumping Hippo",
+                    "Chips",
+                    "Drow",
+                    "Gluttony",
+                    "Stacking",
+                    "Counting"
+            };
     vector<string> sceneNames =
     {
         "Jumping Hippo",

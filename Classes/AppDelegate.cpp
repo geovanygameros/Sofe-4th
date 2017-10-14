@@ -5,17 +5,18 @@
 #include "Drow.h"
 #include "JumpingHippo.h"
 #include "Chips.h"
-#include "Board.h"
+#include "HelloWorldScene.h"
+#include "SimpleAudioEngine.h"
 
 // #define USE_AUDIO_ENGINE 1
-// #define USE_SIMPLE_AUDIO_ENGINE 1
+#define USE_SIMPLE_AUDIO_ENGINE 1
 
 #if USE_AUDIO_ENGINE && USE_SIMPLE_AUDIO_ENGINE
 #error "Don't use AudioEngine and SimpleAudioEngine at the same time. Please just select one in your game!"
 #endif
 
 #if USE_AUDIO_ENGINE
-#include "audio/include/AudioEngine.h"
+//#include "audio/include/AudioEngine.h"
 using namespace cocos2d::experimental;
 #elif USE_SIMPLE_AUDIO_ENGINE
 #include "audio/include/SimpleAudioEngine.h"
@@ -102,7 +103,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     FileUtils::getInstance()->addSearchPath("res");
 
     // create a scene. it's an autorelease object
-
+// /////////////////////////////////////////////////////////////////////// change this line for the Scene that you want to play
     auto scene = Board::createScene();
 
     // run
